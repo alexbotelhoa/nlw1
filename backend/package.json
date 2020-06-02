@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "knex": "^0.21.1",
     "mongoose": "^5.9.16",
     "socket.io": "^2.3.0"
   },
