@@ -34,10 +34,6 @@
     </a>
 </p>
 
-<p align="center">
-  <img alt="BeTheHero" src="https://user-images.githubusercontent.com/44276302/82126113-f4fc3980-9780-11ea-908c-8ade7820ec0e.png" width="100%">
-</p>
-
 ## :rocket: Tecnologias
 
 :point_down: Esse projeto foi desenvolvido com as seguintes tecnologias: :point_down:
