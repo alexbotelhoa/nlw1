@@ -32,7 +32,7 @@ const CreatePoint = () => {
 
     // States após o preenchimento do formulário
     const [formData, setFormData] = useState({
-        nome: '',
+        name: '',
         email: '',
         whatsapp: '',
     });
@@ -112,14 +112,14 @@ const CreatePoint = () => {
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        const { nome, email, whatsapp } = formData;
+        const { name, email, whatsapp } = formData;
         const [latitude, longitude] = selectedPosition;
         const uf = selectedUf;
         const city = selectedCity;
         const items = selectedItems;
 
         const data = {
-            nome, 
+            name, 
             email, 
             whatsapp,
             latitude, 
@@ -128,12 +128,12 @@ const CreatePoint = () => {
             city, 
             items
         };
-
-        api.post('point', data);
+        
+        api.post('/points', data);
 
         alert('Ponto de coleta criado!');
 
-        history.push('/');
+        history.push('/'); 
     };
 
     return (
@@ -157,7 +157,7 @@ const CreatePoint = () => {
                             <h2>Dados</h2>
                         </legend>
                         <div className="field">
-                            <label htmlFor="name">Nome da entidade</label>
+                            <label htmlFor="nome">Nome da entidade</label>
                             <input 
                                 type="text"
                                 name="name"
