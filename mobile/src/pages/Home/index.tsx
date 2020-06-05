@@ -12,7 +12,7 @@ const Home = () => {
 
   function navigationToPoints() {
     navigation.navigate('Points');
- }
+  }
 
   return (
     <>
