@@ -2,11 +2,18 @@ import React from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+// import { useNavigation } from '@react-navigation/native';
 
 const logo = require('../../assets/logo.png');
 const background = require('../../assets/home-background.png');
 
 const Home = () => {
+  // const navigation = useNavigation();
+
+//   function navigationToPoints() {
+//     navigation.navigate('Details');
+//  }
+
   return (
     <>
       <ImageBackground 
