@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
-import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, Image, ImageBackground, StyleSheet, Alert } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,7 +26,6 @@ const Home = () => {
           <Text style={styles.title}>Seu marqueplace de coleta de resíduos</Text>
           <Text style={styles.description}>Ajudando pessoas pontos de coleta de forma eficiente</Text>
         </View>
-
         <View style={styles.footer}>
           <RectButton style={styles.button} onPress={navigationToPoints}>
             <View style={styles.buttonIcon}>
