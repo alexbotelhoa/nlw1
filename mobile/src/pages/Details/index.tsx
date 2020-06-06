@@ -12,44 +12,43 @@ interface Route {
   point_id: number;
 }
 
-interface Point {
+interface Data {
   point: {
     name: string;
     email: string;
     whatsapp: string;
     image: string;
+    image_url: string;
     uf: string;
     city: string;
   };
   items: {
     title: string;
   }[];
-  
 }
 
 const Details = () => {
-  const [data, setData] = useState<Point>({} as Point)
+  const [data, setData] = useState<Data>({} as Data)
   const navigation = useNavigation();
   const route = useRoute();
 
   const routeParams = route.params as Route;
-  const message = 'Olá, tudo bem? \n\n Tenho interesse na coleta de lixo reciclável do seu estabelecimento. \n\n Vamos conversar?';
 
-  message
+  const message = 'Olá, tudo bem? \n\n Tenho interesse na coleta de lixo reciclável do seu estabelecimento. \n\n Vamos conversar?';
 
   useEffect(() => {
     api.get(`points/${routeParams.point_id}`).then(res => { 
       setData(res.data)
     })
-  },[])
+  },[]);
 
   function handleNavigateBack() {
     navigation.goBack();
-  }
+  };
 
   function handleWhatasapp() {
     Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}&text=${message}`)
-  }
+  };
 
   function handleComposeMail() {
     MailComposer.composeAsync({
@@ -57,7 +56,7 @@ const Details = () => {
       subject: 'Coleta de lixo reciclável',
       body: message,
     })
-  }
+  };
 
   if (!data.point) return null;
 
@@ -66,10 +65,10 @@ const Details = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <TouchableOpacity onPress={handleNavigateBack}>
-              <Icon name="arrow-left" size={20} color="#34cb79" />
-            </TouchableOpacity>
+            <Icon name="arrow-left" size={20} color="#34cb79" />
+          </TouchableOpacity>
 
-          <Image style={styles.pointImage} source={{ uri: data.point.image }} />
+          <Image style={styles.pointImage} source={{ uri: data.point.image_url }} />
 
           <Text style={styles.pointName}>{data.point.name}</Text>
           <Text style={styles.pointItems}>{

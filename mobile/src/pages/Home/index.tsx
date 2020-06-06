@@ -8,8 +8,8 @@ const logo = require('../../assets/logo.png');
 const background = require('../../assets/home-background.png');
 
 const Home = () => {
-  const [uf, setUf] = useState('')
-  const [city, setCity] = useState('')
+  const [uf, setUf] = useState('SC')
+  const [city, setCity] = useState('Joinville')
   const navigation = useNavigation();
 
   function navigationToPoints() {
