@@ -136,6 +136,8 @@ const CreatePoint = () => {
         history.push('/'); 
     };
 
+    console.log(selectedPosition)
+
     return (
         <>
             <div id="page-create-point">
