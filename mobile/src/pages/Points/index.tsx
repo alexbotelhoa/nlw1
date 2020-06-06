@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import { Feather as Icon } from '@expo/vector-icons';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';
 
@@ -23,13 +23,22 @@ interface Point {
   longitude: number;
 }
 
+interface Route {
+  uf: string;
+  city: string;
+}
+
 const Points = () => {
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
   const [points, setPoints] = useState<Point[]>([]);
   const [items, setItems] = useState<Item[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
   const navigation = useNavigation();
+  const route = useRoute();
     
+  const routeParams = route.params as Route;
+
   useEffect(() => {
     async function loadPosition() {
       const { status } = await requestPermissionsAsync();
@@ -50,14 +59,14 @@ const Points = () => {
   useEffect(() => {
     api.get('points', {
       params: {
-        city: 'Joinville',
-        uf:  'SC',
-        items: [1, 2]
+        city: routeParams.city,
+        uf:  routeParams.uf,
+        items: selectedItems
       }
     }).then(res => {
       setPoints(res.data)
     })
-  }, [])
+  }, [selectedItems])
 
   useEffect(() => {
     api.get('items').then(res => {
@@ -84,8 +93,6 @@ const Points = () => {
     }
   };
 
-  console.log(initialPosition)
-
   return (
     <>
       <View style={styles.container}>
@@ -103,8 +110,6 @@ const Points = () => {
               style={styles.map}
               loadingEnabled={initialPosition[0] === 0}
               initialRegion={{ 
-                // latitude: -26.2809128,
-                // longitude: -48.8397419,
                 latitude: initialPosition[0],
                 longitude: initialPosition[1],
                 latitudeDelta: 0.014,
