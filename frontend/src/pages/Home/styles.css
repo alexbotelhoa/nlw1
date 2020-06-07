@@ -1,7 +1,9 @@
 #page-home {
-    height: 100vh;
-  
-    background: url('../../assets/home-background.svg') no-repeat 600px bottom;
+    height: 80vh;
+    background-image: url('../../assets/home-background.svg') ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 90% 60%;
   }
   
   #page-home .content {
@@ -47,11 +49,9 @@
     background: var(--primary-color);
     border-radius: 8px;
     text-decoration: none;
-  
     display: flex;
     align-items: center;
     overflow: hidden;
-  
     margin-top: 40px;
   }
   

@@ -15,7 +15,6 @@
     color: var(--title-color);
     font-weight: bold;
     text-decoration: none;
-  
     display: flex;
     align-items: center;
   }
@@ -28,10 +27,8 @@
   #page-create-point form {
     margin: 50px auto;
     padding: 60px;
-    max-width: 730px;
     background: #FFF;
     border-radius: 8px;
-  
     display: flex;
     flex-direction: column;
   }
@@ -71,7 +68,6 @@
   
   #page-create-point form .field {
     flex: 1;
-  
     display: flex;
     flex-direction: column;
     margin-bottom: 24px;
@@ -175,21 +171,17 @@
     height: 180px;
     border-radius: 8px;
     padding: 32px 24px 16px;
-  
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-  
     text-align: center;
-  
     cursor: pointer;
   }
   
   .items-grid li span {
     flex: 1;
     margin-top: 12px;
-  
     display: flex;
     align-items: center;
     color: var(--title-color)

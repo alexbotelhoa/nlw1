@@ -9,12 +9,6 @@ import { SvgUri } from 'react-native-svg';
 
 import api from '../../services/api';
 
-interface Item {
-  id: number;
-  title: string;
-  image_url: string;
-}
-
 interface Point {
   id: number;
   name: string;
@@ -22,12 +16,18 @@ interface Point {
   image_url: string;
   latitude: number;
   longitude: number;
-}
+};
 
 interface Route {
   uf: string;
   city: string;
-}
+};
+
+interface Item {
+  id: number;
+  title: string;
+  image_url: string;
+};
 
 const Points = () => {
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);

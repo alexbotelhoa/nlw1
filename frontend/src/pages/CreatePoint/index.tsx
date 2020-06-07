@@ -136,7 +136,7 @@ const CreatePoint = () => {
 
         alert('Ponto de coleta criado!');
 
-        history.push('/'); 
+        history.push('/dashboard'); 
     };
 
     return (
@@ -145,10 +145,11 @@ const CreatePoint = () => {
                 <header>
                     <img src={logo} alt="Ecoleta"/>
 
-                    <Link to="/">
-                        <FiArrowLeft>
-                            Voltar para home
-                        </FiArrowLeft>
+                    <Link to="/dashboard">
+                        <span>
+                            <FiArrowLeft />
+                        </span>
+                        <strong>Voltar ao Dashboard</strong>
                     </Link>
                 </header>
 

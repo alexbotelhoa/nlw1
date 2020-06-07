@@ -1,0 +1,133 @@
+#page-dashboard {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+#page-dashboard header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page-dashboard header a {
+    color: var(--title-color);
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#page-dashboard header a svg {
+    margin-right: 16px;
+    color: var(--primary-color);
+}
+ 
+#page-dashboard .content ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    margin-top: 50px;
+}
+
+#page-dashboard .content ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+#page-dashboard .content ul li img {
+    max-width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+#page-dashboard .content ul li div {
+    flex: 1;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+}
+
+#page-dashboard .content ul li div strong {
+    font-size: 16px;
+    color: #333;
+}
+
+#page-dashboard .content ul li div p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    margin-top: 5px;
+}
+
+#page-dashboard footer {
+    display: flex;
+    justify-content: center;
+}
+
+#page-dashboard footer div a {
+    width: 360px;
+    height: 56px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+#page-dashboard footer div a span {
+    display: block;
+    background: rgba(0, 0, 0, 0.08);
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+#page-dashboard footer div a span svg {
+    color: #FFF;
+    width: 20px;
+    height: 20px;
+}
+
+#page-dashboard footer div a strong {
+    flex: 1;
+    text-align: center;
+    color: #FFF;
+}
+
+#page-dashboard footer div a:hover {
+    background: #2FB86E;
+}
+  
+@media(max-width: 900px) {
+    #page-dashboard .content {
+        align-items: center;
+        text-align: center;
+    }
+
+    #page-dashboard .content header {
+        margin: 48px auto 0;
+    }
+
+    #page-dashboard .content main {
+        align-items: center;
+    }
+
+    #page-dashboard .content main h1 {
+        font-size: 42px;
+    }
+
+    #page-dashboard .content main p {
+        font-size: 24px;
+    }
+}
+  
