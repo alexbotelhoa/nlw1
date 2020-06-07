@@ -3,10 +3,12 @@ import { celebrate, Joi } from 'celebrate'
 import multer from 'multer';
 import multerConfig from './config/multer';
 
+import DashboardController from './controllers/DashboardController';
 import PointsController from './controllers/PointsController';
 import ItemsController from './controllers/ItemsController';
 
 const routes = Router();
+const dashboardController = new DashboardController;
 const pointsController = new PointsController;
 const itemsController = new ItemsController;
 const upload = multer(multerConfig);
@@ -15,7 +17,7 @@ routes.get('/', (req, res) => {
     return res.send('Olá Marilene!');
 });
 
-routes.get('/items', itemsController.index);
+routes.get('/dashboard', dashboardController.index);
 
 routes.get('/points', pointsController.index);
 routes.post(
@@ -38,5 +40,7 @@ routes.post(
     pointsController.create
 );
 routes.get('/points/:id', pointsController.show);
+
+routes.get('/items', itemsController.index);
 
 export default routes;
