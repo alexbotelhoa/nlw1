@@ -5,6 +5,7 @@ docs/
 *.code-workspace
 *.keystore
 *.psd
+*.sqlite
 
 # Logs
 logs
