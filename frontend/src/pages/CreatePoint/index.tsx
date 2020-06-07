@@ -4,24 +4,25 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { LeafletMouseEvent } from 'leaflet'
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import axios from 'axios';
-import api from '../../services/api';
 
 import './styles.css';
+import api from '../../services/api';
 import logo from '../../assets/logo.svg';
+import Dropzone from '../../components/Dropzone';
 
 interface Item {
     id: number;
     title: string;
     image_url: string;
-}
+};
 
 interface IBGEUfRes {
     sigla: string;
-}
+};
 
 interface IBGECityRes {
     nome: string;
-}
+};
 
 const CreatePoint = () => {
     // States iniciais do formulário
@@ -31,6 +32,7 @@ const CreatePoint = () => {
     const [items, setItems] = useState<Item[]>([]);
 
     // States após o preenchimento do formulário
+    const [selectedFile, setSelectedFile] = useState<File>();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -118,16 +120,17 @@ const CreatePoint = () => {
         const city = selectedCity;
         const items = selectedItems;
 
-        const data = {
-            name, 
-            email, 
-            whatsapp,
-            latitude, 
-            longitude,
-            uf, 
-            city, 
-            items
-        };
+        const data = new FormData();
+
+        data.append('name', name);
+        data.append('email', email);
+        data.append('whatsapp', whatsapp);
+        data.append('latitude', String(latitude));
+        data.append('longitude', String(longitude));
+        data.append('uf', uf);
+        data.append('city', city);
+        data.append('items', items.join(','));
+        if (selectedFile) data.append('image', selectedFile);
         
         api.post('/points', data);
 
@@ -151,6 +154,8 @@ const CreatePoint = () => {
 
                 <form onSubmit={handleSubmit}>
                     <h1>Cadastro do ponto de coleta</h1>
+
+                    <Dropzone onFileUploaded={setSelectedFile} />
 
                     <fieldset>
                         <legend>
