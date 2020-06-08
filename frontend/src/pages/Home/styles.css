@@ -1,6 +1,6 @@
 #page-home {
     height: 80vh;
-    background-image: url('../../assets/home-background.svg') ;
+    background-image: url('../../assets/home-background.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 90% 60%;
@@ -83,18 +83,42 @@
     background: #2FB86E;
   }
   
+  @media(max-width: 1500px) {
+    #page-home {
+      background-size: 65% 65%;
+    }
+  
+    #page-home .content main h1 {
+      font-size: 42px;
+      max-width: 360px;
+    }
+  
+    #page-home .content main p {
+      font-size: 24px;
+      max-width: 450px;
+    }
+  }
+
   @media(max-width: 900px) {
+    #page-home {
+      background-image: url('../../assets/home-background.svg');
+      background-size: 50% 50%;
+      background-position: center;
+      background-position-y: 75px;
+    }
+
     #page-home .content {
       align-items: center;
       text-align: center;
     }
   
     #page-home .content header {
-      margin: 48px auto 0;
+      margin: 50px auto 0;
     }
   
     #page-home .content main {
       align-items: center;
+      margin-top: 350px;
     }
   
     #page-home .content main h1 {

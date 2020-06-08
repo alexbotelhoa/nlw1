@@ -20,9 +20,9 @@ const Home = () => {
                         
                         <Link to="/dashboard">
                             <span>
-                                <FiLogIn />
+                                <FiLogIn/>
                             </span>
-                            <strong>Veja seus pontos de coleta</strong>
+                            <strong>Localize um ponto de coleta</strong>
                         </Link>
                     </main>
                 </div>
