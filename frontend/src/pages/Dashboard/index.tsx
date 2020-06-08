@@ -128,8 +128,6 @@ const Dashboard = () => {
                     </Link>
                 </header>
 
-
-
                 <form onSubmit={handleSubmit}>
                     <fieldset className="search">
                         <div className="field-group">
@@ -168,9 +166,6 @@ const Dashboard = () => {
                                 </ul>
                             </div>
                             <div className="field">
-                                {/* <legend>
-                                    <span>Selecione um ou mais ítens abaixo</span>
-                                </legend> */}
                                 <button type="submit">
                                     <span>
                                         <FiSearch />
@@ -191,7 +186,6 @@ const Dashboard = () => {
                         </div>
                     </fieldset>
                 </form>
-
 
                 <div className="content">
                     <ul>
