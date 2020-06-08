@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiSave } from 'react-icons/fi';
 import { LeafletMouseEvent } from 'leaflet'
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import axios from 'axios';
@@ -57,7 +57,7 @@ const CreatePoint = () => {
     }, []);
 
     useEffect(() => {
-        axios.get<IBGEUfRes[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(res => {
+        axios.get<IBGEUfRes[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome').then(res => {
             const ufInitials = res.data.map(uf => uf.sigla);
             setUfs(ufInitials);
         })
@@ -65,7 +65,7 @@ const CreatePoint = () => {
 
     useEffect(() => {
         if (selectedUf === '0') return;
-        axios.get<IBGECityRes[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/distritos`).then(res => {
+        axios.get<IBGECityRes[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/distritos?orderBy=nome`).then(res => {
             const cityNames = res.data.map(city => city.nome);
             setCities(cityNames);
         })
@@ -251,7 +251,10 @@ const CreatePoint = () => {
                     </fieldset>
 
                     <button type="submit">
-                        Cadastrar ponto de coleta
+                        <span>
+                            <FiSave />
+                        </span>
+                        <strong>Cadastrar ponto de coleta</strong>
                     </button>
                 </form>
             </div>

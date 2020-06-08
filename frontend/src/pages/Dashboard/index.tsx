@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { FiLogIn, FiArrowLeft, FiSearch, FiPlusCircle, FiPlus  } from 'react-icons/fi';
+import { FiArrowLeft, FiSearch, FiPlus  } from 'react-icons/fi';
 import axios from 'axios';
 
 import './styles.css';
@@ -10,7 +10,9 @@ import logo from '../../assets/logo.svg';
 interface Point {
     id: number;
     name: string;
+    email: string;
     image_url: string;
+    items: string;
 };
 
 interface Item {
@@ -38,27 +40,8 @@ const Dashboard = () => {
     const [selectedCity, setSelectedCity] = useState('0');
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
-
-
-
     useEffect(() => {
-        api.get('points', {
-        params: {
-            city: 'Joinville',
-            uf:  'SC',
-            items: [
-                1,
-                3,
-                5
-            ]
-        }
-        }).then(res => {
-        setPoints(res.data)
-        })
-    }, [selectedItems]);
-
-    useEffect(() => {
-        axios.get<IBGEUfRes[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(res => {
+        axios.get<IBGEUfRes[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome').then(res => {
             const ufInitials = res.data.map(uf => uf.sigla);
             setUfs(ufInitials);
         })
@@ -66,7 +49,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (selectedUf === '0') return;
-        axios.get<IBGECityRes[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/distritos`).then(res => {
+        axios.get<IBGECityRes[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/distritos?orderBy=nome`).then(res => {
             const cityNames = res.data.map(city => city.nome);
             setCities(cityNames);
         })
@@ -77,9 +60,6 @@ const Dashboard = () => {
           setItems(res.data)
         })
     }, []);
-
-
-
 
     function handleSelectUf(event: ChangeEvent<HTMLSelectElement>) {
         const uf = event.target.value;
@@ -109,12 +89,31 @@ const Dashboard = () => {
         const city = selectedCity;
         const items = selectedItems;
 
+        console.log(uf, city, items)
+
+        if (
+            uf === '0' 
+            || city === '0' 
+            || items.length === 0
+        ) alert('Selecione pelo menos uma opção em todos os campos!');
+
         const data = new FormData();
+
+        data.append('uf', uf);
+        data.append('city', city);
+        data.append('items', items.join(','));
+
+        api.get('dashboard', {
+        params: {
+            uf:  uf,
+            city: city,
+            items: items
+        }
+        }).then(res => {
+        setPoints(res.data)
+        })
     }
     
-
-
-
     return (
         <>
             <div id="page-dashboard">
@@ -132,8 +131,7 @@ const Dashboard = () => {
 
 
                 <form onSubmit={handleSubmit}>
-
-                    <fieldset>
+                    <fieldset className="search">
                         <div className="field-group">
                             <div className="field">
                                 <select name="uf" id="uf" value={selectedUf} onChange={handleSelectUf}>
@@ -155,9 +153,6 @@ const Dashboard = () => {
                     </fieldset>
 
                     <fieldset>
-                        {/* <legend>
-                            <span>Selecione um ou mais ítens abaixo</span>
-                        </legend> */}
                         <div className="field-group">
                             <div className="field">
                                 <ul className="items-grid">
@@ -173,6 +168,9 @@ const Dashboard = () => {
                                 </ul>
                             </div>
                             <div className="field">
+                                {/* <legend>
+                                    <span>Selecione um ou mais ítens abaixo</span>
+                                </legend> */}
                                 <button type="submit">
                                     <span>
                                         <FiSearch />
@@ -197,64 +195,17 @@ const Dashboard = () => {
 
                 <div className="content">
                     <ul>
-                        <li key="1">
-                            <img src="http://192.168.1.101:3333/uploads/066ebd2b2fbd-market2.jpg" alt="" />
-                            <div>
-                                <strong>Marcadinho</strong>
-                                <p>Lâmpada, Papelão</p>
-                            </div>
-                        </li>
-
-                        <li key="1">
-                            <img src="http://192.168.1.101:3333/uploads/066ebd2b2fbd-market2.jpg" alt="" />
-                            <div>
-                                <strong>Marcadinho</strong>
-                                <p>Lâmpada, Papelão</p>
-                            </div>
-                        </li>
-
-                        <li key="1">
-                            <img src="http://192.168.1.101:3333/uploads/066ebd2b2fbd-market2.jpg" alt="" />
-                            <div>
-                                <strong>Marcadinho</strong>
-                                <p>Lâmpada, Papelão</p>
-                            </div>
-                        </li>
-
-                        <li key="1">
-                            <img src="http://192.168.1.101:3333/uploads/066ebd2b2fbd-market2.jpg" alt="" />
-                            <div>
-                                <strong>Marcadinho</strong>
-                                <p>Lâmpada, Papelão</p>
-                            </div>
-                        </li>
-
-                        <li key="1">
-                            <img src="http://192.168.1.101:3333/uploads/066ebd2b2fbd-market2.jpg" alt="" />
-                            <div>
-                                <strong>Marcadinho</strong>
-                                <p>Lâmpada, Papelão</p>
-                            </div>
-                        </li>
+                        {points.map(point => (
+                            <li key={point.id} >
+                                <img src={point.image_url} title={`E-mail: ${point.email}`} />
+                                <div>
+                                    <strong>{point.name}</strong>
+                                    <p>{point.items}</p>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
-                </div>
-
-
-
-                {/* <footer>
-                    <div>
-                        <Link to="/create-point">
-                            <span>
-                                <FiLogIn />
-                            </span>
-                            <strong>Cadastre um ponto de coleta</strong>
-                        </Link>
-                    </div>
-                </footer> */}
-
-
-
-                
+                </div>                
             </div>
         </>
     )
