@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Roboto_400Regular',
       lineHeight: 24,
       marginTop: 8,
-      marginBottom: 24,
+      marginBottom: 10,
       color: '#6C6C80'
     },
   
