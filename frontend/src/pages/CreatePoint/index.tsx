@@ -1,8 +1,9 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiSave } from 'react-icons/fi';
-import { LeafletMouseEvent } from 'leaflet'
 import { Map, TileLayer, Marker } from 'react-leaflet'
+import { LeafletMouseEvent } from 'leaflet'
+import InputMask from 'react-input-mask';
 import axios from 'axios';
 
 import './styles.css';
@@ -120,6 +121,9 @@ const CreatePoint = () => {
         const city = selectedCity;
         const items = selectedItems;
 
+        console.log('email', email)
+        console.log('whatsapp', whatsapp)
+
         const data = new FormData();
 
         data.append('name', name);
@@ -165,9 +169,9 @@ const CreatePoint = () => {
                         <div className="field">
                             <label htmlFor="nome">Nome da entidade</label>
                             <input 
-                                type="text"
-                                name="name"
                                 id="name" 
+                                name="name"
+                                type="text"
                                 onChange={handleInputChange}
                             />
                         </div>
@@ -176,18 +180,20 @@ const CreatePoint = () => {
                             <div className="field">
                                 <label htmlFor="email">E-mail</label>
                                 <input 
-                                    type="email"
-                                    name="email"
                                     id="email" 
+                                    name="email"
+                                    type="email"
                                     onChange={handleInputChange}
                                 />
                             </div>
                             <div className="field">
                                 <label htmlFor="whatsapp">Whatsapp</label>
-                                <input 
-                                    type="text"
+                                <InputMask 
+                                    id="whatsapp"
                                     name="whatsapp"
-                                    id="whatsapp" 
+                                    type="text"
+                                    mask="+5\599999999999" 
+                                    maskChar={null}
                                     onChange={handleInputChange}
                                 />
                             </div>

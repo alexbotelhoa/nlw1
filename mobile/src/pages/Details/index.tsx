@@ -76,8 +76,14 @@ const Details = () => {
           }</Text>
 
           <View style={styles.address}>
-          <Text style={styles.addressTitle}>Endereço</Text>
-          <Text style={styles.addressContent}>{data.point.city}, {data.point.uf}</Text>
+            <Text style={styles.addressTitle}>Endereço</Text>
+            <Text style={styles.addressContent}>{data.point.city}, {data.point.uf}</Text>
+
+            <Text style={styles.addressTitle}>Whatsapp</Text>
+            <Text style={styles.addressContent}>{data.point.whatsapp}</Text>
+
+            <Text style={styles.addressTitle}>E-mail</Text>
+            <Text style={styles.addressContent}>{data.point.email}</Text>
           </View>
         </View>
         <View style={styles.footer}>
@@ -140,6 +146,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Roboto_400Regular',
       lineHeight: 24,
       marginTop: 8,
+      marginBottom: 24,
       color: '#6C6C80'
     },
   

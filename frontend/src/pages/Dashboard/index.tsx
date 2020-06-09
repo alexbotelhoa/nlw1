@@ -35,7 +35,6 @@ const Dashboard = () => {
     const [cities, setCities] = useState<string[]>([]);
     const [items, setItems] = useState<Item[]>([]);
 
-
     const [selectedUf, setSelectedUf] = useState('0');
     const [selectedCity, setSelectedCity] = useState('0');
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
