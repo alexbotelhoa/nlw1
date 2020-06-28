@@ -24,8 +24,8 @@
 </p>
 
 <p align="center">
-    <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#computer-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#computer_mouse-backend">Backend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#computer-frontend">Frontend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#iphone-mobile">Mobile</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -41,6 +41,10 @@
 <p align="center">
   <img alt="Setup" src="https://user-images.githubusercontent.com/44276302/83959228-c5f15900-a850-11ea-98e8-c224af61295f.jpg" width="100%">
 </p>
+
+## :computer: Projeto
+
+O Projeto Ecoleta tem como objetivo principal aproximar as empresas das organizações ou catadores independentes que fazem a coleta seletiva e dão o destino correto ao nosso lixo reciclado colaborando assim com a preservação do nosso meio ambiente.
 
 ## :rocket: Tecnologias
 
@@ -71,10 +75,6 @@
 -  [React Native Picker Select](https://github.com/lawnstarter/react-native-picker-select)
 -  [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
 -  [React Native Svg](https://github.com/react-native-community/react-native-svg)
-
-## :computer: Projeto
-
-O Projeto Ecoleta tem como objetivo principal aproximar as empresas das organizações ou catadores independentes que fazem a coleta seletiva e dão o destino correto ao nosso lixo reciclado colaborando assim com a preservação do nosso meio ambiente.
 
 ## :information_source: Desenvolvimento
 
