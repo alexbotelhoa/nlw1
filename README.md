@@ -1,4 +1,3 @@
-
 <h1 align="center">
     <img alt="Ecoleta" title="#ecoleta" src="https://user-images.githubusercontent.com/44276302/83959283-73646c80-a851-11ea-9280-0ea87f894d69.png" width="250px" />
 </h1>
@@ -88,7 +87,7 @@ $ cd backend
 # Instale as dependências
 $ yarn
 # Rode o backend 
-$ yarn start 
+$ yarn start
 ```
 
 ### :computer: Frontend: 
